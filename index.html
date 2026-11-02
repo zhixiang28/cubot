@@ -423,7 +423,7 @@
       <li>Tap: she hops happily. Keep holding: she purrs and says hello at 2 seconds.</li>
       <li>Shake or spin her: she gets dizzy.</li>
       <li>Hold the touch sensor and shake: opens settings on her screen. Tilt to move, tap to pick, hold 1 second to go back.</li>
-      <li>Powered off: hold the touch sensor for 3 seconds, or tap Power on in this app.</li>
+      <li>Powered off: hold the touch sensor for 3 seconds to turn her back on. Alarms still wake her.</li>
     </ul>
   </details>
 </main>
@@ -455,7 +455,7 @@
 
 <dialog id="powerDialog">
   <h3>Power off Cubot?</h3>
-  <p>Her screen turns off. Tap Power on here, or hold her touch sensor for 3 seconds, to turn her back on.</p>
+  <p>Cubot goes into deep sleep to save battery and disconnects from this app. Hold her touch sensor for 3 seconds to turn her back on. Alarms still wake her.</p>
   <div class="dialog-actions">
     <button class="btn-cancel" id="powerCancel">Keep on</button>
     <button class="btn-danger" id="powerConfirm">Power off</button>
@@ -702,7 +702,7 @@
     }
   });
   $("powerCancel").addEventListener("click", () => powerDialog.close());
-  $("powerConfirm").addEventListener("click", () => { powerDialog.close(); send("DO OFF"); toast("Cubot powered off"); });
+  $("powerConfirm").addEventListener("click", () => { powerDialog.close(); send("DO OFF"); toast("Cubot is going to sleep. Hold her touch sensor 3 s to turn on."); });
 
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible" && mode === "live") syncTime(false);
